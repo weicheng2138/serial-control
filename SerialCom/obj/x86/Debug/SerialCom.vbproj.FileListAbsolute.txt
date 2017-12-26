@@ -1,0 +1,33 @@
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\bin\Debug\SerialCom.exe
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\bin\Debug\SerialCom.pdb
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\bin\Debug\SerialCom.xml
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Form1.resources
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Resources.resources
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\SerialCom.exe
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\SerialCom.xml
+C:\Users\Kelvin\Documents\Visual Studio 2010\Projects\VB\SerialCom\SerialCom\obj\x86\Debug\SerialCom.pdb
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Form1.resources
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Resources.resources
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbproj.GenerateResource.Cache
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbproj.CoreCompileInputs.cache
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.exe
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.xml
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.pdb
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\bin\Debug\SerialCom.exe
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\bin\Debug\SerialCom.pdb
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\bin\Debug\SerialCom.xml
+C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbprojResolveAssemblyReference.cache
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.exe
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.pdb
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.xml
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbprojResolveAssemblyReference.cache
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Form1.resources
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Resources.resources
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbproj.GenerateResource.Cache
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbproj.CoreCompileInputs.cache
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.exe
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.xml
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.pdb
