@@ -26,6 +26,7 @@ Public Class Form1
         ButtonM2.Enabled = False
         ButtonM3.Enabled = False
         ButtonLink.Enabled = False
+        ComboBox2.Enabled = False
 
         ButtonInit.BackColor = Color.Silver
         ButtonWrite.BackColor = Color.Silver
