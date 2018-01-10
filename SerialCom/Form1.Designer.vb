@@ -73,15 +73,16 @@ Partial Class Form1
         Me.ButtonLink = New System.Windows.Forms.Button()
         Me.ButtonTest3 = New System.Windows.Forms.Button()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Xaxis = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Xaxis = New System.Windows.Forms.Label()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -437,6 +438,7 @@ Partial Class Form1
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.BackColor = System.Drawing.Color.DarkGray
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 634)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -446,30 +448,42 @@ Partial Class Form1
         '
         'ToolStripStatusLabel1
         '
-        Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.DarkGray
+        Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.DimGray
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.ToolStripStatusLabel1.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(56, 17)
+        Me.ToolStripStatusLabel1.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(97, 22)
         Me.ToolStripStatusLabel1.Text = "Init State"
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.BackColor = System.Drawing.Color.DarkGray
+        Me.ToolStripStatusLabel2.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.ToolStripStatusLabel2.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(32, 17)
+        Me.ToolStripStatusLabel2.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(61, 22)
         Me.ToolStripStatusLabel2.Text = "M1: "
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.BackColor = System.Drawing.Color.DarkGray
+        Me.ToolStripStatusLabel3.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.ToolStripStatusLabel3.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(32, 17)
+        Me.ToolStripStatusLabel3.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(61, 22)
         Me.ToolStripStatusLabel3.Text = "M2: "
         '
         'ToolStripStatusLabel4
         '
         Me.ToolStripStatusLabel4.BackColor = System.Drawing.Color.DarkGray
+        Me.ToolStripStatusLabel4.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.ToolStripStatusLabel4.Margin = New System.Windows.Forms.Padding(0)
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(32, 17)
+        Me.ToolStripStatusLabel4.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(61, 22)
         Me.ToolStripStatusLabel4.Text = "M3: "
         '
         'MenuStrip1
@@ -491,7 +505,7 @@ Partial Class Form1
         'LoadStripMenuItem
         '
         Me.LoadStripMenuItem.Name = "LoadStripMenuItem"
-        Me.LoadStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.LoadStripMenuItem.Text = "載入"
         '
         'ToolStripMenuItem2
@@ -504,13 +518,13 @@ Partial Class Form1
         '說明ToolStripMenuItem
         '
         Me.說明ToolStripMenuItem.Name = "說明ToolStripMenuItem"
-        Me.說明ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.說明ToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.說明ToolStripMenuItem.Text = "說明"
         '
         '聲明ToolStripMenuItem
         '
         Me.聲明ToolStripMenuItem.Name = "聲明ToolStripMenuItem"
-        Me.聲明ToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.聲明ToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.聲明ToolStripMenuItem.Text = "聲明"
         '
         'SpeedMenuItem
@@ -638,16 +652,52 @@ Partial Class Form1
         Me.Panel6.Size = New System.Drawing.Size(494, 208)
         Me.Panel6.TabIndex = 26
         '
-        'Xaxis
+        'RichTextBox3
         '
-        Me.Xaxis.AutoSize = True
-        Me.Xaxis.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Xaxis.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.Xaxis.Location = New System.Drawing.Point(683, 39)
-        Me.Xaxis.Name = "Xaxis"
-        Me.Xaxis.Size = New System.Drawing.Size(54, 20)
-        Me.Xaxis.TabIndex = 27
-        Me.Xaxis.Text = "X-Axis"
+        Me.RichTextBox3.BackColor = System.Drawing.Color.Wheat
+        Me.RichTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox3.Location = New System.Drawing.Point(15, 31)
+        Me.RichTextBox3.Name = "RichTextBox3"
+        Me.RichTextBox3.Size = New System.Drawing.Size(296, 82)
+        Me.RichTextBox3.TabIndex = 28
+        Me.RichTextBox3.Text = ""
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.Label11.ForeColor = System.Drawing.SystemColors.ControlDark
+        Me.Label11.Location = New System.Drawing.Point(11, 8)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(58, 20)
+        Me.Label11.TabIndex = 29
+        Me.Label11.Text = "Output"
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.LimeGreen
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.Button3.ForeColor = System.Drawing.SystemColors.Window
+        Me.Button3.Location = New System.Drawing.Point(321, 157)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(161, 32)
+        Me.Button3.TabIndex = 13
+        Me.Button3.Text = "Close"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.LimeGreen
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Window
+        Me.Button2.Location = New System.Drawing.Point(321, 119)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(161, 32)
+        Me.Button2.TabIndex = 28
+        Me.Button2.Text = "Init"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Label3
         '
@@ -659,6 +709,18 @@ Partial Class Form1
         Me.Label3.Size = New System.Drawing.Size(42, 20)
         Me.Label3.TabIndex = 31
         Me.Label3.Text = "Com"
+        '
+        'ComboBox4
+        '
+        Me.ComboBox4.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Location = New System.Drawing.Point(321, 31)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(161, 28)
+        Me.ComboBox4.TabIndex = 28
         '
         'Label10
         '
@@ -684,64 +746,19 @@ Partial Class Form1
         Me.ComboBox3.Size = New System.Drawing.Size(161, 28)
         Me.ComboBox3.TabIndex = 29
         '
-        'ComboBox4
+        'Xaxis
         '
-        Me.ComboBox4.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(321, 31)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(161, 28)
-        Me.ComboBox4.TabIndex = 28
+        Me.Xaxis.AutoSize = True
+        Me.Xaxis.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.Xaxis.ForeColor = System.Drawing.SystemColors.ControlDark
+        Me.Xaxis.Location = New System.Drawing.Point(683, 39)
+        Me.Xaxis.Name = "Xaxis"
+        Me.Xaxis.Size = New System.Drawing.Size(54, 20)
+        Me.Xaxis.TabIndex = 27
+        Me.Xaxis.Text = "X-Axis"
         '
-        'Button2
+        'FolderBrowserDialog1
         '
-        Me.Button2.BackColor = System.Drawing.Color.LimeGreen
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Button2.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button2.Location = New System.Drawing.Point(321, 119)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(161, 32)
-        Me.Button2.TabIndex = 28
-        Me.Button2.Text = "Init"
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.LimeGreen
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Button3.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button3.Location = New System.Drawing.Point(321, 157)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(161, 32)
-        Me.Button3.TabIndex = 13
-        Me.Button3.Text = "Close"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'RichTextBox3
-        '
-        Me.RichTextBox3.BackColor = System.Drawing.Color.Wheat
-        Me.RichTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox3.Location = New System.Drawing.Point(15, 31)
-        Me.RichTextBox3.Name = "RichTextBox3"
-        Me.RichTextBox3.Size = New System.Drawing.Size(296, 82)
-        Me.RichTextBox3.TabIndex = 28
-        Me.RichTextBox3.Text = ""
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.Label11.ForeColor = System.Drawing.SystemColors.ControlDark
-        Me.Label11.Location = New System.Drawing.Point(11, 8)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(58, 20)
-        Me.Label11.TabIndex = 29
-        Me.Label11.Text = "Output"
         '
         'Form1
         '
@@ -851,4 +868,5 @@ Partial Class Form1
     Friend WithEvents Label10 As Label
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Xaxis As Label
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class

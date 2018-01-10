@@ -8,6 +8,7 @@ Public Class Form1
     '------------------------------------------------
     Dim myPort As Array
     Dim num As Integer = 1
+    Dim tempCommand As String = ""
     Delegate Sub SetTextCallback(ByVal [text] As String) 'Added to prevent threading errors during receiveing of data
     '------------------------------------------------
 
@@ -60,6 +61,7 @@ Public Class Form1
     End Sub
     Private Sub ButtonLink_Click(sender As Object, e As EventArgs) Handles ButtonLink.Click
         SerialPort1.Write("L" & vbCr)
+        tempCommand = "L"
         Threading.Thread.Sleep(1000)
 
         ButtonWrite.Enabled = True
@@ -86,6 +88,13 @@ Public Class Form1
     End Sub
     Private Sub ButtonWrite_Click(sender As System.Object, e As System.EventArgs) Handles ButtonWrite.Click
         SerialPort1.Write(RichTextBox1.Text & vbCr) 'concatenate with \n
+        Dim pattern As Char() = New Char() {" "c}
+        Dim target As String() = RichTextBox1.Text.Split(pattern, StringSplitOptions.RemoveEmptyEntries)
+        tempCommand = target.First
+        Me.RichTextBox2.Text &= tempCommand
+        Me.RichTextBox2.AppendText(Environment.NewLine)
+        Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
+        Me.RichTextBox2.ScrollToCaret()
     End Sub
     Private Sub ButtonZero_Click(sender As Object, e As EventArgs) Handles ButtonZero.Click
         ButtonClose.Enabled = True
@@ -137,13 +146,40 @@ Public Class Form1
             Me.Invoke(x, New Object() {(text)})
         Else
             Me.RichTextBox2.Text &= [text] 'append text
+            Me.RichTextBox2.AppendText(Environment.NewLine)
             Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
             Me.RichTextBox2.ScrollToCaret()
+
+            Select Case [text].First
+                Case Nothing
+                Case "E"
+                    Me.ToolStripStatusLabel1.Text = "Status: " + "E"
+                Case "C"
+                    Me.ToolStripStatusLabel1.Text = "Status: " + "C"
+                Case "G"
+                    Me.ToolStripStatusLabel1.Text = "Status: " + "G"
+
+
+                    Dim data As Integer = Convert.ToInt32(text.Substring(2), 16)
+                    Select Case tempCommand
+                        Case "M1"
+                            Me.ToolStripStatusLabel2.Text = "M1: " + GetChar(text, 2) + data.ToString
+                        Case "M2"
+                            Me.ToolStripStatusLabel3.Text = "M2: " + GetChar(text, 2) + data.ToString
+                        Case "M3"
+                            Me.ToolStripStatusLabel4.Text = "M3: " + GetChar(text, 2) + data.ToString
+                        Case Else
+                            MsgBox("Current Command is -> " + tempCommand)
+                    End Select
+                Case Else
+                    MsgBox("Command not exist...", 0 + 48)
+            End Select
         End If
     End Sub
-    Private Sub ReceivedTextToStatus(ByVal [text] As String) 'input from ReadExisting
-        Me.ToolStripStatusLabel1.Text &= [text]
-    End Sub
+
+
+    'Three-axis machine status
+
 
     'Test button section
     Private Sub ButtonTest_Click(sender As System.Object, e As System.EventArgs) Handles ButtonTest.Click
@@ -167,10 +203,9 @@ Public Class Form1
     End Sub
     Private Sub ButtonTest2_Click(sender As Object, e As EventArgs) Handles ButtonTest2.Click
         num += 1
-        Me.ToolStripStatusLabel1.Text = "Status: " + CStr(num + 1)
-        Me.ToolStripStatusLabel2.Text = "M1: " + CStr(num + 2)
-        Me.ToolStripStatusLabel3.Text = "M2: " + CStr(num + 3)
-        Me.ToolStripStatusLabel4.Text = "M3: " + CStr(num + 4)
+        Dim [text] As String = "G+0003E8"
+
+        ReceivedText([text])
     End Sub
     Private Sub ButtonTest3_Click(sender As Object, e As EventArgs) Handles ButtonTest3.Click
         Me.RichTextBox2.Text &= "QQQQQQQQQQQQQQQQ" 'append text
@@ -178,6 +213,7 @@ Public Class Form1
         Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
         Me.RichTextBox2.ScrollToCaret()
     End Sub
+
 
     'Menu item section
     Private Sub SpeedMenuItem_Click(sender As Object, e As EventArgs) Handles SpeedMenuItem.Click
@@ -197,8 +233,6 @@ Public Class Form1
                 Dim firstline As String = SR.ReadLine
                 'your code here for first line
                 MsgBox(firstline)
-
-
             End Using 'closes file
         End If
     End Sub
@@ -207,26 +241,32 @@ Public Class Form1
     Private Sub ButtonStop_Click(sender As Object, e As EventArgs) Handles ButtonStop.Click
         SerialPort1.Write("e" & vbCr)
         Threading.Thread.Sleep(1000)
+        tempCommand = "e"
     End Sub
     Private Sub ButtonM1_Click(sender As Object, e As EventArgs) Handles ButtonM1.Click
         SerialPort1.Write("M1 " + RichTextBoxM1.Text & vbCr)
         Threading.Thread.Sleep(100)
+        tempCommand = "M1"
     End Sub
-
     Private Sub ButtonM2_Click(sender As Object, e As EventArgs) Handles ButtonM2.Click
         SerialPort1.Write("M2 " + RichTextBoxM2.Text & vbCr)
         Threading.Thread.Sleep(100)
+        tempCommand = "M2"
     End Sub
-
     Private Sub ButtonM3_Click(sender As Object, e As EventArgs) Handles ButtonM3.Click
         SerialPort1.Write("M3 " + RichTextBoxM3.Text & vbCr)
         Threading.Thread.Sleep(100)
+        tempCommand = "M3"
     End Sub
 
     Public Sub ShowSpeedSetingDialogBox()
         Dim speedSetingDialog As New FormSpeed(SerialPort1)
         speedSetingDialog.ShowDialog()
     End Sub
+
+
+
+
 
     'TODO X-Axis listening
 

@@ -31,3 +31,4 @@ C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\Se
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.exe
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.xml
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.pdb
+C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.FormSpeed.resources
