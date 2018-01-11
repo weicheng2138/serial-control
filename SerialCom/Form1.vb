@@ -85,6 +85,8 @@ Public Class Form1
         ButtonM2.BackColor = Color.LimeGreen
         ButtonM3.BackColor = Color.LimeGreen
         ButtonLink.BackColor = Color.Silver
+
+        SerialPort1.Write("Q" & vbCr)
     End Sub
     Private Sub ButtonWrite_Click(sender As System.Object, e As System.EventArgs) Handles ButtonWrite.Click
         SerialPort1.Write(RichTextBox1.Text & vbCr) 'concatenate with \n
@@ -171,6 +173,13 @@ Public Class Form1
                         Case Else
                             MsgBox("Current Command is -> " + tempCommand)
                     End Select
+                Case "+"
+                    Dim pattern As Char() = New Char() {" "c}
+                    Dim target As String() = text.Split(pattern, StringSplitOptions.RemoveEmptyEntries)
+
+                    Me.ToolStripStatusLabel2.Text = "M1: " + target(0)
+                    Me.ToolStripStatusLabel3.Text = "M2: " + target(1)
+                    Me.ToolStripStatusLabel4.Text = "M3: " + target(2)
                 Case Else
                     MsgBox("Command not exist...", 0 + 48)
             End Select
@@ -203,15 +212,12 @@ Public Class Form1
     End Sub
     Private Sub ButtonTest2_Click(sender As Object, e As EventArgs) Handles ButtonTest2.Click
         num += 1
-        Dim [text] As String = "G+0003E8"
+        Dim text As String = "+000.016 +0000.00 +000.220"
 
-        ReceivedText([text])
+        ReceivedText(TextBox1.Text)
     End Sub
     Private Sub ButtonTest3_Click(sender As Object, e As EventArgs) Handles ButtonTest3.Click
-        Me.RichTextBox2.Text &= "QQQQQQQQQQQQQQQQ" 'append text
-        Me.RichTextBox2.AppendText(Environment.NewLine)
-        Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
-        Me.RichTextBox2.ScrollToCaret()
+
     End Sub
 
 
@@ -263,10 +269,6 @@ Public Class Form1
         Dim speedSetingDialog As New FormSpeed(SerialPort1)
         speedSetingDialog.ShowDialog()
     End Sub
-
-
-
-
 
     'TODO X-Axis listening
 

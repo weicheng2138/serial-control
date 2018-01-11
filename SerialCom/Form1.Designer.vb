@@ -83,6 +83,7 @@ Partial Class Form1
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Xaxis = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -627,7 +628,7 @@ Partial Class Form1
         Me.ButtonTest3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonTest3.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
         Me.ButtonTest3.ForeColor = System.Drawing.SystemColors.Window
-        Me.ButtonTest3.Location = New System.Drawing.Point(357, 233)
+        Me.ButtonTest3.Location = New System.Drawing.Point(357, 258)
         Me.ButtonTest3.Margin = New System.Windows.Forms.Padding(0)
         Me.ButtonTest3.Name = "ButtonTest3"
         Me.ButtonTest3.Size = New System.Drawing.Size(66, 37)
@@ -757,8 +758,13 @@ Partial Class Form1
         Me.Xaxis.TabIndex = 27
         Me.Xaxis.Text = "X-Axis"
         '
-        'FolderBrowserDialog1
+        'TextBox1
         '
+        Me.TextBox1.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.TextBox1.Location = New System.Drawing.Point(357, 233)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(143, 22)
+        Me.TextBox1.TabIndex = 28
         '
         'Form1
         '
@@ -766,6 +772,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1189, 656)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Xaxis)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.ButtonTest3)
@@ -869,4 +876,5 @@ Partial Class Form1
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents Xaxis As Label
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents TextBox1 As TextBox
 End Class
