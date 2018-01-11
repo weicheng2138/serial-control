@@ -23,7 +23,6 @@ C:\Users\Pei-Chih\Desktop\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbprojReso
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.exe
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.pdb
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.xml
-C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbprojResolveAssemblyReference.cache
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Form1.resources
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.Resources.resources
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbproj.GenerateResource.Cache

@@ -233,13 +233,15 @@ Public Class Form1
 
         ' Show the Dialog.
         ' If the user clicked OK in the dialog and 
-        ' a .CUR file was selected, open it.
+        ' a .txt file was selected, open it.
         If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            Using SR As New System.IO.StreamReader(openFileDialog1.FileName)
-                Dim firstline As String = SR.ReadLine
-                'your code here for first line
-                MsgBox(firstline)
-            End Using 'closes file
+
+            Dim fileReader As String
+
+            fileReader = My.Computer.FileSystem.ReadAllText(openFileDialog1.FileName)
+            MsgBox(My.Computer.FileSystem.CurrentDirectory)
+
+
         End If
     End Sub
 
