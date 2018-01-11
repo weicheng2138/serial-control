@@ -1,10 +1,4 @@
-﻿Imports System
-Imports System.Threading
-Imports System.IO.Ports
-Imports System.ComponentModel
-
-
-Public Class Form1
+﻿Public Class Form1
     '------------------------------------------------
     Dim myPort As Array
     Dim num As Integer = 1
@@ -217,7 +211,11 @@ Public Class Form1
         ReceivedText(TextBox1.Text)
     End Sub
     Private Sub ButtonTest3_Click(sender As Object, e As EventArgs) Handles ButtonTest3.Click
-
+        Dim sAttr As Double = My.Settings.M2
+        MsgBox(My.Settings.M1)
+        Threading.Thread.Sleep(2000)
+        My.Settings.M1 = 100
+        MsgBox(My.Settings.M1)
     End Sub
 
 
