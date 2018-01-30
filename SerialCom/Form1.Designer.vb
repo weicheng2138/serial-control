@@ -23,6 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -86,20 +88,20 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.ButtonExecute = New System.Windows.Forms.Button()
         Me.ButtonSelectAll = New System.Windows.Forms.Button()
         Me.ButtonClear = New System.Windows.Forms.Button()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -110,9 +112,10 @@ Partial Class Form1
         Me.Panel6.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -802,17 +805,69 @@ Partial Class Form1
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.LightGray
+        Me.Panel7.Controls.Add(Me.DataGridView1)
         Me.Panel7.Controls.Add(Me.Panel9)
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Controls.Add(Me.Button4)
         Me.Panel7.Controls.Add(Me.ButtonExecute)
         Me.Panel7.Controls.Add(Me.ButtonSelectAll)
         Me.Panel7.Controls.Add(Me.ButtonClear)
-        Me.Panel7.Controls.Add(Me.ListView1)
         Me.Panel7.Location = New System.Drawing.Point(8, 6)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(690, 565)
         Me.Panel7.TabIndex = 1
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
+        Me.DataGridView1.Name = "DataGridView1"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView1.RowHeadersWidth = 60
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView1.RowTemplate.Height = 24
+        Me.DataGridView1.Size = New System.Drawing.Size(321, 430)
+        Me.DataGridView1.TabIndex = 0
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel9.Location = New System.Drawing.Point(341, 331)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(332, 215)
+        Me.Panel9.TabIndex = 16
+        '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel8.Location = New System.Drawing.Point(341, 16)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(332, 295)
+        Me.Panel8.TabIndex = 15
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Red
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        Me.Button4.ForeColor = System.Drawing.SystemColors.Window
+        Me.Button4.Location = New System.Drawing.Point(3, 479)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(318, 83)
+        Me.Button4.TabIndex = 14
+        Me.Button4.Text = "Stop"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'ButtonExecute
         '
@@ -856,33 +911,23 @@ Partial Class Form1
         Me.ButtonClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.ButtonClear.UseVisualStyleBackColor = False
         '
-        'ListView1
+        'ContextMenuStrip1
         '
-        Me.ListView1.BackColor = System.Drawing.SystemColors.Window
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
-        Me.ListView1.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.ListView1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.ListView1.ForeColor = System.Drawing.Color.Gray
-        Me.ListView1.FullRowSelect = True
-        Me.ListView1.GridLines = True
-        Me.ListView1.HideSelection = False
-        Me.ListView1.LabelEdit = True
-        Me.ListView1.Location = New System.Drawing.Point(3, 3)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(318, 427)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveToolStripMenuItem, Me.EditToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
         '
-        'ColumnHeader1
+        'RemoveToolStripMenuItem
         '
-        Me.ColumnHeader1.Text = "Movement"
-        Me.ColumnHeader1.Width = 111
+        Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.RemoveToolStripMenuItem.Text = "remove"
         '
-        'ColumnHeader2
+        'EditToolStripMenuItem
         '
-        Me.ColumnHeader2.Text = "Detail"
-        Me.ColumnHeader2.Width = 254
+        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.EditToolStripMenuItem.Text = "edit"
         '
         'TabPage1
         '
@@ -906,7 +951,7 @@ Partial Class Form1
         Me.TabPage1.Controls.Add(Me.RichTextBox2)
         Me.TabPage1.Controls.Add(Me.ButtonTest2)
         Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Font = New System.Drawing.Font("Origin", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.TabPage1.Location = New System.Drawing.Point(4, 26)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -926,53 +971,17 @@ Partial Class Form1
         Me.TabControl1.Size = New System.Drawing.Size(1189, 604)
         Me.TabControl1.TabIndex = 29
         '
-        'ContextMenuStrip1
+        'Column1
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveToolStripMenuItem, Me.EditToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 48)
+        Me.Column1.HeaderText = "Movement"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 80
         '
-        'RemoveToolStripMenuItem
+        'Column2
         '
-        Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.RemoveToolStripMenuItem.Text = "remove"
-        '
-        'EditToolStripMenuItem
-        '
-        Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.EditToolStripMenuItem.Text = "edit"
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.Red
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.Window
-        Me.Button4.Location = New System.Drawing.Point(3, 479)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(318, 83)
-        Me.Button4.TabIndex = 14
-        Me.Button4.Text = "Stop"
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.Button4.UseVisualStyleBackColor = False
-        '
-        'Panel8
-        '
-        Me.Panel8.BackColor = System.Drawing.Color.DarkGray
-        Me.Panel8.Location = New System.Drawing.Point(341, 16)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(332, 295)
-        Me.Panel8.TabIndex = 15
-        '
-        'Panel9
-        '
-        Me.Panel9.BackColor = System.Drawing.Color.DarkGray
-        Me.Panel9.Location = New System.Drawing.Point(341, 331)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(332, 215)
-        Me.Panel9.TabIndex = 16
+        Me.Column2.HeaderText = "Value"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 180
         '
         'Form1
         '
@@ -1003,10 +1012,11 @@ Partial Class Form1
         Me.Panel6.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1075,9 +1085,6 @@ Partial Class Form1
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents Panel7 As Panel
     Friend WithEvents ButtonExecute As Button
     Friend WithEvents ButtonSelectAll As Button
@@ -1088,4 +1095,7 @@ Partial Class Form1
     Friend WithEvents Button4 As Button
     Friend WithEvents Panel9 As Panel
     Friend WithEvents Panel8 As Panel
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
 End Class

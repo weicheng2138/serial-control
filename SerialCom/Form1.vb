@@ -6,7 +6,6 @@ Public Class Form1
     Dim myPort As Array
     Dim num As Integer = 1
     Dim tempCommand As String = ""
-    Dim backgroundWorker As BackgroundWorker
     Delegate Sub SetTextCallback(ByVal [text] As String) 'Added to prevent threading errors during receiveing of data
     '------------------------------------------------
 
@@ -38,15 +37,12 @@ Public Class Form1
         ButtonM3.BackColor = Color.Silver
         ButtonLink.BackColor = Color.Silver
 
-        'Test ListView
-        ListView1.Items.Add("M1")
-        ListView1.Items(0).SubItems.Add("+1000")
-        ListView1.Items.Add("M2")
-        ListView1.Items(1).SubItems.Add("-100")
-        ListView1.Items.Add("M3")
-        ListView1.Items(2).SubItems.Add("-0.002")
-        ListView1.Items.Add("Delay")
-        ListView1.Items(3).SubItems.Add("1000 " + "ms")
+        'Test 
+        DataGridView1.Rows.Add("M1", "+1000", True)
+        DataGridView1.Rows.Add("M2", "-1000", True)
+        DataGridView1.Rows.Add("M3", "+100", True)
+        DataGridView1.Rows.Add("Delay", "1000ms", False)
+
 
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -250,7 +246,6 @@ Public Class Form1
         MsgBox(My.Settings.M1)
     End Sub
 
-
     'Menu item section
     Private Sub SpeedMenuItem_Click(sender As Object, e As EventArgs) Handles SpeedMenuItem.Click
         ShowSpeedSetingDialogBox()
@@ -307,25 +302,21 @@ Public Class Form1
 
 
     'Tab of Scripts
-    Private Sub ListView1_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles ListView1.MouseDown
+    Private Sub DataGridView1_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
         'Works with both buttons
-        If e.Button = Windows.Forms.MouseButtons.Right And ListView1.Items.Count > 0 Then
+        If e.Button = Windows.Forms.MouseButtons.Right And DataGridView1.Rows.Count > 0 Then
             ContextMenuStrip1.Show(Cursor.Position)
         End If
     End Sub
     Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
-        ListView1.Items.Clear()
+        DataGridView1.Rows.Clear()
     End Sub
-
     Private Sub ButtonSelectAll_Click(sender As Object, e As EventArgs) Handles ButtonSelectAll.Click
-        For Each item As ListViewItem In ListView1.Items
-            item.Selected = True
-
-        Next
+        DataGridView1.SelectAll()
     End Sub
     Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
-        For i As Integer = ListView1.SelectedIndices.Count - 1 To 0 Step -1
-            ListView1.Items.RemoveAt(ListView1.SelectedIndices(i))
+        For Each row As DataGridViewRow In DataGridView1.SelectedRows
+            DataGridView1.Rows.Remove(row)
         Next
     End Sub
 
