@@ -1,8 +1,12 @@
-﻿Public Class Form1
+﻿Imports System.ComponentModel
+
+'TODO Real time update the machine status
+Public Class Form1
     '------------------------------------------------
     Dim myPort As Array
     Dim num As Integer = 1
     Dim tempCommand As String = ""
+    Dim backgroundWorker As BackgroundWorker
     Delegate Sub SetTextCallback(ByVal [text] As String) 'Added to prevent threading errors during receiveing of data
     '------------------------------------------------
 
@@ -33,6 +37,17 @@
         ButtonM2.BackColor = Color.Silver
         ButtonM3.BackColor = Color.Silver
         ButtonLink.BackColor = Color.Silver
+
+        'Test ListView
+        ListView1.Items.Add("M1")
+        ListView1.Items(0).SubItems.Add("+1000")
+        ListView1.Items.Add("M2")
+        ListView1.Items(1).SubItems.Add("-100")
+        ListView1.Items.Add("M3")
+        ListView1.Items(2).SubItems.Add("-0.002")
+        ListView1.Items.Add("Delay")
+        ListView1.Items(3).SubItems.Add("1000 " + "ms")
+
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         ButtonInit.Enabled = True
@@ -80,17 +95,17 @@
         ButtonM3.BackColor = Color.LimeGreen
         ButtonLink.BackColor = Color.Silver
 
-        SerialPort1.Write("Q" & vbCr)
+        'SerialPort1.Write("Q" & vbCr)
     End Sub
     Private Sub ButtonWrite_Click(sender As System.Object, e As System.EventArgs) Handles ButtonWrite.Click
         SerialPort1.Write(RichTextBox1.Text & vbCr) 'concatenate with \n
         Dim pattern As Char() = New Char() {" "c}
         Dim target As String() = RichTextBox1.Text.Split(pattern, StringSplitOptions.RemoveEmptyEntries)
         tempCommand = target.First
-        Me.RichTextBox2.Text &= tempCommand
-        Me.RichTextBox2.AppendText(Environment.NewLine)
-        Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
-        Me.RichTextBox2.ScrollToCaret()
+        'Me.RichTextBox2.Text &= tempCommand
+        'Me.RichTextBox2.AppendText(Environment.NewLine)
+        'Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
+        'Me.RichTextBox2.ScrollToCaret()
     End Sub
     Private Sub ButtonZero_Click(sender As Object, e As EventArgs) Handles ButtonZero.Click
         ButtonClose.Enabled = True
@@ -142,41 +157,58 @@
             Me.Invoke(x, New Object() {(text)})
         Else
             Me.RichTextBox2.Text &= [text] 'append text
-            Me.RichTextBox2.AppendText(Environment.NewLine)
-            Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
-            Me.RichTextBox2.ScrollToCaret()
 
-            Select Case [text].First
-                Case Nothing
-                Case "E"
-                    Me.ToolStripStatusLabel1.Text = "Status: " + "E"
-                Case "C"
-                    Me.ToolStripStatusLabel1.Text = "Status: " + "C"
-                Case "G"
-                    Me.ToolStripStatusLabel1.Text = "Status: " + "G"
+            If Me.RichTextBox2.Text.EndsWith(vbLf) Then
+                Dim pattern1 As Char() = New Char() {vbLf}
+                Dim lastReceivedData As String = Me.RichTextBox2.Text.Split(pattern1, StringSplitOptions.RemoveEmptyEntries).Last
+
+                'Me.RichTextBox2.Text &= lastReceivedData  'append text
+                'Me.RichTextBox2.AppendText(Environment.NewLine)
+                Me.RichTextBox2.SelectionStart = Me.RichTextBox2.TextLength
+                Me.RichTextBox2.ScrollToCaret()
 
 
-                    Dim data As Integer = Convert.ToInt32(text.Substring(2), 16)
-                    Select Case tempCommand
-                        Case "M1"
-                            Me.ToolStripStatusLabel2.Text = "M1: " + GetChar(text, 2) + data.ToString
-                        Case "M2"
-                            Me.ToolStripStatusLabel3.Text = "M2: " + GetChar(text, 2) + data.ToString
-                        Case "M3"
-                            Me.ToolStripStatusLabel4.Text = "M3: " + GetChar(text, 2) + data.ToString
-                        Case Else
-                            MsgBox("Current Command is -> " + tempCommand)
-                    End Select
-                Case "+"
-                    Dim pattern As Char() = New Char() {" "c}
-                    Dim target As String() = text.Split(pattern, StringSplitOptions.RemoveEmptyEntries)
+                Select Case lastReceivedData.First
+                    Case Nothing
+                    Case "E"
+                        Me.ToolStripStatusLabel1.Text = "Status: " + "E"
+                    Case "C"
+                        Me.ToolStripStatusLabel1.Text = "Status: " + "C"
+                    Case "G"
+                        Me.ToolStripStatusLabel1.Text = "Status: " + "G"
+                        'SerialPort1.Write("Q" & vbCr)
 
-                    Me.ToolStripStatusLabel2.Text = "M1: " + target(0)
-                    Me.ToolStripStatusLabel3.Text = "M2: " + target(1)
-                    Me.ToolStripStatusLabel4.Text = "M3: " + target(2)
-                Case Else
-                    MsgBox("Command not exist...", 0 + 48)
-            End Select
+                        Dim data As Double = Convert.ToInt32(lastReceivedData.Substring(2), 16) / 1000
+                        Select Case tempCommand
+                            Case "M1"
+                                Me.ToolStripStatusLabel2.Text = "M1: " + GetChar(lastReceivedData, 2) + data.ToString
+                            Case "M2"
+                                Me.ToolStripStatusLabel3.Text = "M2: " + GetChar(lastReceivedData, 2) + (data * 10).ToString
+                            Case "M3"
+                                Me.ToolStripStatusLabel4.Text = "M3: " + GetChar(lastReceivedData, 2) + data.ToString
+                            Case Else
+                                MsgBox("Current Command is..." + lastReceivedData + "..." + tempCommand)
+                        End Select
+                    Case "+"
+                        Dim pattern2 As Char() = New Char() {" "c}
+                        Dim target As String() = lastReceivedData.Split(pattern2, StringSplitOptions.RemoveEmptyEntries)
+
+                        Me.ToolStripStatusLabel2.Text = "M1: " + target(0)
+                        Me.ToolStripStatusLabel3.Text = "M2: " + target(1)
+                        Me.ToolStripStatusLabel4.Text = "M3: " + target(2)
+                    Case Else
+                        MsgBox("Command not exist...", 0 + 48)
+                End Select
+
+
+
+            End If
+
+
+
+
+
+
         End If
     End Sub
 
@@ -270,6 +302,31 @@
         speedSetingDialog.ShowDialog()
     End Sub
 
+
     'TODO X-Axis listening
+
+
+    'Tab of Scripts
+    Private Sub ListView1_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles ListView1.MouseDown
+        'Works with both buttons
+        If e.Button = Windows.Forms.MouseButtons.Right And ListView1.Items.Count > 0 Then
+            ContextMenuStrip1.Show(Cursor.Position)
+        End If
+    End Sub
+    Private Sub ButtonClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
+        ListView1.Items.Clear()
+    End Sub
+
+    Private Sub ButtonSelectAll_Click(sender As Object, e As EventArgs) Handles ButtonSelectAll.Click
+        For Each item As ListViewItem In ListView1.Items
+            item.Selected = True
+
+        Next
+    End Sub
+    Private Sub RemoveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveToolStripMenuItem.Click
+        For i As Integer = ListView1.SelectedIndices.Count - 1 To 0 Step -1
+            ListView1.Items.RemoveAt(ListView1.SelectedIndices(i))
+        Next
+    End Sub
 
 End Class
