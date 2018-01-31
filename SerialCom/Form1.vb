@@ -301,7 +301,7 @@ Public Class Form1
     'TODO X-Axis listening
 
 
-    'Tab of Scripts for sequencing control
+    'Tab of Scripts for sequencing controling
     Private Sub DataGridView1_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDown
         'Works with both buttons
         If e.Button = Windows.Forms.MouseButtons.Right And DataGridView1.Rows.Count > 0 Then
