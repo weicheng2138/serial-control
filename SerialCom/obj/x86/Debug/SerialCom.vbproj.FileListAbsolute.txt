@@ -33,3 +33,16 @@ C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\Se
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.FormSpeed.resources
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\bin\Debug\SerialCom.exe.config
 C:\Users\ANHE-2\Desktop\VisualBasicProjects\SerialCom\SerialCom\obj\x86\Debug\SerialCom.vbprojResolveAssemblyReference.cache
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\bin\Debug\SerialCom.exe.config
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\bin\Debug\SerialCom.exe
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\bin\Debug\SerialCom.pdb
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\bin\Debug\SerialCom.xml
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.vbprojResolveAssemblyReference.cache
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.Form1.resources
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.FormSpeed.resources
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.Resources.resources
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.vbproj.GenerateResource.Cache
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.vbproj.CoreCompileInputs.cache
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.exe
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.xml
+C:\Users\Pei-Chih\Desktop\瑋成專用\serial-control\SerialCom\obj\x86\Debug\SerialCom.pdb
