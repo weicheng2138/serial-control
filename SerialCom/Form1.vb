@@ -300,12 +300,12 @@ Public Class Form1
                 file = My.Computer.FileSystem.OpenTextFileWriter(saveFileDialog1.FileName, True)
 
                 For Each row As DataGridViewRow In DataGridView1.Rows
-                    'If row.Index <> DataGridView1.Rows.Count - 1 Then
-                    file.WriteLine(row.Cells(0).Value + " " + row.Cells(1).Value)
-                    'Me.RichTextBox4.Text &= "@" + row.Cells(0).Value + "@" + row.Cells(1).Value + "@" + vbCrLf     'append text
-                    'Me.RichTextBox4.SelectionStart = Me.RichTextBox4.TextLength
-                    'Me.RichTextBox4.ScrollToCaret()
-                    ' End If
+                    If row.Index <> DataGridView1.Rows.Count - 1 Then
+                        file.WriteLine(row.Cells(0).Value + " " + row.Cells(1).Value)
+                        'Me.RichTextBox4.Text &= "@" + row.Cells(0).Value + "@" + row.Cells(1).Value + "@" + vbCrLf     'append text
+                        'Me.RichTextBox4.SelectionStart = Me.RichTextBox4.TextLength
+                        'Me.RichTextBox4.ScrollToCaret()
+                    End If
                 Next
                 file.Close()
             End If
