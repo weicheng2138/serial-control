@@ -25,6 +25,8 @@ Public Class Form1
         ButtonM3.Enabled = False
         ButtonLink.Enabled = False
         ComboBox2.Enabled = False
+        TabControl1.TabPages(1).Enabled = False
+        Panel1.Enabled = False
 
         ButtonInit.BackColor = Color.Silver
         ButtonWrite.BackColor = Color.Silver
@@ -38,10 +40,11 @@ Public Class Form1
         ButtonLink.BackColor = Color.Silver
 
         'Test 
-        DataGridView1.Rows.Add("M1", "+1000", True)
-        DataGridView1.Rows.Add("M2", "-1000", True)
-        DataGridView1.Rows.Add("M3", "+100", True)
-        DataGridView1.Rows.Add("Delay", "1000ms", False)
+        DataGridView1.Rows.Add("M1", "-5")
+        DataGridView1.Rows.Add("M2", "-5")
+        DataGridView1.Rows.Add("M3", "+0.001")
+        DataGridView1.Rows.Add("D", "5000")
+        DataGridView1.Rows.Add("M1", "+5")
 
 
     End Sub
@@ -78,6 +81,9 @@ Public Class Form1
         ButtonM2.Enabled = True
         ButtonM3.Enabled = True
         ButtonLink.Enabled = False
+
+        TabControl1.TabPages(1).Enabled = True
+        Panel1.Enabled = True
 
         ButtonWrite.BackColor = Color.LimeGreen
 
@@ -126,6 +132,8 @@ Public Class Form1
         ButtonM3.Enabled = False
         ButtonLink.Enabled = False
         ComboBox1.Enabled = True
+        TabControl1.TabPages(1).Enabled = False
+        Panel1.Enabled = False
 
         ButtonInit.BackColor = Color.LimeGreen
         ButtonWrite.BackColor = Color.Silver
@@ -183,7 +191,7 @@ Public Class Form1
                             Case "M3"
                                 Me.ToolStripStatusLabel4.Text = "M3: " + GetChar(lastReceivedData, 2) + data.ToString
                             Case Else
-                                MsgBox("Current Command is..." + lastReceivedData + "..." + tempCommand)
+                                'MsgBox("Current Command is..." + lastReceivedData + "..." + tempCommand)
                         End Select
                     Case "+"
                         Dim pattern2 As Char() = New Char() {" "c}
@@ -252,7 +260,7 @@ Public Class Form1
     End Sub
     Private Sub LoadStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadStripMenuItem.Click
         Dim openFileDialog1 As New OpenFileDialog()
-        Dim content As String
+        Dim content As String()
         openFileDialog1.Filter = "Txt Files|*.txt"
         openFileDialog1.Title = "Select a Txt File"
 
@@ -260,13 +268,47 @@ Public Class Form1
         ' If the user clicked OK in the dialog and 
         ' a .txt file was selected, open it.
         If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            Using SR As New System.IO.StreamReader(openFileDialog1.FileName)
+                DataGridView1.Rows.Clear()
+                Dim line As String
+                line = SR.ReadLine
 
-            Dim fileReader As String
+                ' Loop over each line in file, While list is Not Nothing.
+                Do While (Not line Is Nothing)
+                    Dim result As String() = line.Split(" "c)
 
-            fileReader = My.Computer.FileSystem.ReadAllText(openFileDialog1.FileName)
-            MsgBox(My.Computer.FileSystem.CurrentDirectory)
+                    'Me.RichTextBox4.Text &= result(0) + vbCrLf     'append text
+                    'Me.RichTextBox4.SelectionStart = Me.RichTextBox4.TextLength
+                    'Me.RichTextBox4.ScrollToCaret()
 
+                    DataGridView1.Rows.Add(result(0), result(1))
+                    line = SR.ReadLine
+                Loop
+            End Using 'closes file
 
+        End If
+    End Sub
+    Private Sub SaveAnotherToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAnotherToolStripMenuItem.Click
+        Dim saveFileDialog1 As New SaveFileDialog()
+        saveFileDialog1.Filter = "Txt Files|*.txt"
+        saveFileDialog1.Title = "Select a Txt File"
+        If saveFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+
+            If (saveFileDialog1.FileName IsNot "") Then
+                Dim file As System.IO.StreamWriter
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, "")
+                file = My.Computer.FileSystem.OpenTextFileWriter(saveFileDialog1.FileName, True)
+
+                For Each row As DataGridViewRow In DataGridView1.Rows
+                    'If row.Index <> DataGridView1.Rows.Count - 1 Then
+                    file.WriteLine(row.Cells(0).Value + " " + row.Cells(1).Value)
+                    'Me.RichTextBox4.Text &= "@" + row.Cells(0).Value + "@" + row.Cells(1).Value + "@" + vbCrLf     'append text
+                    'Me.RichTextBox4.SelectionStart = Me.RichTextBox4.TextLength
+                    'Me.RichTextBox4.ScrollToCaret()
+                    ' End If
+                Next
+                file.Close()
+            End If
         End If
     End Sub
 
@@ -319,5 +361,28 @@ Public Class Form1
             DataGridView1.Rows.Remove(row)
         Next
     End Sub
+    Private Sub ButtonExecute_Click(sender As Object, e As EventArgs) Handles ButtonExecute.Click
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            Me.RichTextBox4.Text &= row.Cells(1).Value + vbCrLf     'append text
+            Me.RichTextBox4.SelectionStart = Me.RichTextBox4.TextLength
+            Me.RichTextBox4.ScrollToCaret()
+
+            Select Case row.Cells(0).Value
+                Case "M1"
+                    SerialPort1.Write("M1 " + row.Cells(1).Value & vbCr)
+                    Threading.Thread.Sleep(100)
+                Case "M2"
+                    SerialPort1.Write("M2 " + row.Cells(1).Value & vbCr)
+                    Threading.Thread.Sleep(100)
+                Case "M3"
+                    SerialPort1.Write("M3 " + row.Cells(1).Value & vbCr)
+                    Threading.Thread.Sleep(100)
+                Case "D"
+                    Threading.Thread.Sleep(row.Cells(1).Value)
+            End Select
+
+        Next
+    End Sub
+
 
 End Class

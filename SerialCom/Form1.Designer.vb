@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -34,6 +34,7 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveAnotherToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.說明ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.聲明ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -89,8 +90,11 @@ Partial Class Form1
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.RichTextBox4 = New System.Windows.Forms.RichTextBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ButtonExecute = New System.Windows.Forms.Button()
         Me.ButtonSelectAll = New System.Windows.Forms.Button()
@@ -100,8 +104,7 @@ Partial Class Form1
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -113,6 +116,7 @@ Partial Class Form1
         Me.TabPage2.SuspendLayout()
         Me.Panel7.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel8.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -183,7 +187,7 @@ Partial Class Form1
         '
         'ToolStripMenuItem1
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadStripMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadStripMenuItem, Me.SaveAnotherToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(43, 20)
         Me.ToolStripMenuItem1.Text = "檔案"
@@ -191,8 +195,14 @@ Partial Class Form1
         'LoadStripMenuItem
         '
         Me.LoadStripMenuItem.Name = "LoadStripMenuItem"
-        Me.LoadStripMenuItem.Size = New System.Drawing.Size(98, 22)
-        Me.LoadStripMenuItem.Text = "載入"
+        Me.LoadStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadStripMenuItem.Text = "載入腳本"
+        '
+        'SaveAnotherToolStripMenuItem
+        '
+        Me.SaveAnotherToolStripMenuItem.Name = "SaveAnotherToolStripMenuItem"
+        Me.SaveAnotherToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveAnotherToolStripMenuItem.Text = "另存腳本"
         '
         'ToolStripMenuItem2
         '
@@ -823,21 +833,33 @@ Partial Class Form1
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.RowHeadersWidth = 60
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(321, 430)
         Me.DataGridView1.TabIndex = 0
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Movement"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 80
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Value"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 180
         '
         'Panel9
         '
@@ -850,17 +872,26 @@ Partial Class Form1
         'Panel8
         '
         Me.Panel8.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel8.Controls.Add(Me.RichTextBox4)
         Me.Panel8.Location = New System.Drawing.Point(341, 16)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(332, 295)
         Me.Panel8.TabIndex = 15
+        '
+        'RichTextBox4
+        '
+        Me.RichTextBox4.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBox4.Name = "RichTextBox4"
+        Me.RichTextBox4.Size = New System.Drawing.Size(162, 243)
+        Me.RichTextBox4.TabIndex = 0
+        Me.RichTextBox4.Text = ""
         '
         'Button4
         '
         Me.Button4.BackColor = System.Drawing.Color.Red
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.Window
+        Me.Button4.ForeColor = System.Drawing.Color.White
         Me.Button4.Location = New System.Drawing.Point(3, 479)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(318, 83)
@@ -874,7 +905,7 @@ Partial Class Form1
         Me.ButtonExecute.BackColor = System.Drawing.Color.SteelBlue
         Me.ButtonExecute.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonExecute.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.ButtonExecute.ForeColor = System.Drawing.SystemColors.Window
+        Me.ButtonExecute.ForeColor = System.Drawing.Color.White
         Me.ButtonExecute.Location = New System.Drawing.Point(195, 436)
         Me.ButtonExecute.Name = "ButtonExecute"
         Me.ButtonExecute.Size = New System.Drawing.Size(126, 37)
@@ -888,7 +919,7 @@ Partial Class Form1
         Me.ButtonSelectAll.BackColor = System.Drawing.Color.LimeGreen
         Me.ButtonSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonSelectAll.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.ButtonSelectAll.ForeColor = System.Drawing.SystemColors.Window
+        Me.ButtonSelectAll.ForeColor = System.Drawing.Color.White
         Me.ButtonSelectAll.Location = New System.Drawing.Point(97, 436)
         Me.ButtonSelectAll.Name = "ButtonSelectAll"
         Me.ButtonSelectAll.Size = New System.Drawing.Size(92, 37)
@@ -902,7 +933,7 @@ Partial Class Form1
         Me.ButtonClear.BackColor = System.Drawing.Color.LimeGreen
         Me.ButtonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonClear.Font = New System.Drawing.Font("Microsoft JhengHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(136, Byte))
-        Me.ButtonClear.ForeColor = System.Drawing.SystemColors.Window
+        Me.ButtonClear.ForeColor = System.Drawing.Color.White
         Me.ButtonClear.Location = New System.Drawing.Point(3, 436)
         Me.ButtonClear.Name = "ButtonClear"
         Me.ButtonClear.Size = New System.Drawing.Size(88, 37)
@@ -971,18 +1002,6 @@ Partial Class Form1
         Me.TabControl1.Size = New System.Drawing.Size(1189, 604)
         Me.TabControl1.TabIndex = 29
         '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Movement"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 80
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Value"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 180
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -1013,6 +1032,7 @@ Partial Class Form1
         Me.TabPage2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel8.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1098,4 +1118,7 @@ Partial Class Form1
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents RichTextBox4 As RichTextBox
+    Friend WithEvents SaveAnotherToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class
